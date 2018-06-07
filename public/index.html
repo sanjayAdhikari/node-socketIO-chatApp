@@ -3,8 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>Home</title>
-    
-    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket =io();
+        socket.on('connect', () => {
+            console.log('server is connected');
+        })
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+        })
+    </script>
 </head>
 <body>
     <h1> Welcome to the chat App</h1>
