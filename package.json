@@ -1,0 +1,23 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Socket i/o chat app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "10.3.0"
+  },
+  "keywords": [
+    "socket",
+    "IO",
+    "chat",
+    "app"
+  ],
+  "author": "Sanjay Adhikari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
