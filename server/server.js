@@ -15,17 +15,18 @@ io.on('connection',(socket) => {
     console.log('new User is connected');
 
     socket.on('createMessage', (data) => {
-        console.log(data);
+        console.log('create Message:',data);
+       io.emit('newMessage', {
+           from: data.from,
+           text: data.text,
+           createAt: new Date().getTime()
+       })
     })
 
     socket.on('disconnect', () => {
         console.log('User is disconnected');
     })
 
-    socket.emit('newMessage', {
-        from: 'Dipesh Dulal',
-        text: 'I am good ! Sanjay'
-    })
 
 })
 server.listen(port, () => {
