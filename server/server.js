@@ -5,7 +5,7 @@ var express = require('express');
 var socketIO = require('socket.io');
 
 // installed local modules
-const {generateMessage} = require('./utils/message');
+const {generateMessage,generateLocationMessage} = require('./utils/message');
 
 // define constant
 const publicPath = path.join(__dirname,'../public');
@@ -29,16 +29,12 @@ io.on('connection', (socket) => {
 
     socket.on('createMessage', (message, callback) => {
         console.log(message);
-
         io.emit('newMessage', generateMessage(message.from, message.text));
         callback('acknowledged');
+    });
 
-        //    socket.broadcast.emit('newMessage', {
-        //     from: data.from,
-        //     text: data.text,
-        //     createAt: new Date().getTime()
-        //    });
-
+    socket.on('createLocation', (data) => {
+        io.emit('newLocation',generateLocationMessage('Admin',data));
     })
 
     socket.on('disconnect', () => {
