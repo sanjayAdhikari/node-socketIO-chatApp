@@ -1,17 +1,18 @@
 var socket = io();
 
 socket.on('newMessage', function (data) {
-    console.log(`${data.from} says: ${data.text}`);
+    var formattedTime = moment(data.createdAt);
     var li = jQuery('<li></li>');
-    li.text(`${data.from}: ${data.text}`);
+    li.text(`${data.from} ${formattedTime.format('h:mm a')}: ${data.text}`);
     jQuery('#messages').append(li);
 })
 
 socket.on('newLocation', function (message) {
+    var formattedTime = moment(message.createdAt);
     var li = jQuery('<li></li>');
     var a = jQuery('<a target="_blank"> Get location </a>');
 
-    li.text(`${message.from}: `)
+    li.text(`${message.from} ${formattedTime.format('h:mm a')}: `)
     a.attr('href',message.url);
     li.append(a);
     jQuery('#messages').append(li);
