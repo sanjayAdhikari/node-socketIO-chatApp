@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createLocation', (data) => {
-        io.emit('newLocation',generateLocationMessage('Admin',data));
+        socket.broadcast.emit('newLocation',generateLocationMessage('Admin',data));
     })
 
     socket.on('disconnect', () => {
