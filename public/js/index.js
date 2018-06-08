@@ -10,5 +10,9 @@ socket.on('disconnect', () => {
     console.log('Disconnected from server');
 })
 
+socket.on('onJoin', function(responseMessage){
+    console.log(responseMessage);
+})
+
 
 
